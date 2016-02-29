@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 /**
  * HomeControlle
  * 
- * MVC Controller for Home Page View
+ * MVC Controller for Hive Home Page View.
  * 
  * @author Rodrigo Carvalho
  *
