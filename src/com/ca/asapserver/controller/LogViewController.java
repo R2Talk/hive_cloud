@@ -10,6 +10,12 @@ import com.ca.asapserver.msgmanager.MsgManager;
 import com.ca.asapserver.vo.MessageVo;
 import com.google.gson.Gson;
 
+/**
+ * LogViewControlle
+ * 
+ * @author Rodrigo Carvalho
+ *
+ */
 @Controller
 public class LogViewController {
 	
