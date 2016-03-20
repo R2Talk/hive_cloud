@@ -31,7 +31,7 @@ public class MsgManager {
 		msgRepository.insertMessage(msg);
 	}
 	
-	public List<MessageVo> getAllMessages() {
+	public List<MessageVo> getMessages() {
 		
 		MessageDAO messageDAO = (MessageDAO) AppContextHelper.getApplicationContext().getBean("messageDAO");
 		

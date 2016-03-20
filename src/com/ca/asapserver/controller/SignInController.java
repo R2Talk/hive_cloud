@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 @RestController
 public class SignInController{
    
-   @RequestMapping(value = "/signin", method = RequestMethod.GET)	
+   @RequestMapping(value = "/signin", method = RequestMethod.GET, produces = "application/json")	
    public String signin(@RequestParam("name") String name, @RequestParam("password") String password) {
 	   
 	  System.out.println(name);

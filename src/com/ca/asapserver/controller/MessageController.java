@@ -1,12 +1,16 @@
 package com.ca.asapserver.controller;
 
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ca.asapserver.msgmanager.MsgManager;
+import com.ca.asapserver.vo.MessageVo;
+import com.google.gson.Gson;
 
 /**
  * MessageController
@@ -24,6 +28,19 @@ public class MessageController {
 		
 		MsgManager msgManager = new MsgManager();
 		msgManager.insertMsg(msg);
+	}
+	
+	@RequestMapping(value = "/getMessages", method = RequestMethod.GET, produces = "application/json")	
+	public String getMessages() { 
+		MsgManager msgManager = new MsgManager();
+		
+		List<MessageVo> messages = msgManager.getMessages();
+		
+		Gson gson = new Gson();
+		String msgsToJason = gson.toJson(messages);
+		
+		return msgsToJason;
+		
 	}	
 	
 }

@@ -26,7 +26,7 @@ public class LogViewController {
 		
 		MsgManager msgManager = new MsgManager();
 		
-		msgs = msgManager.getAllMessages();
+		msgs = msgManager.getMessages();
 		
 		Gson gson = new Gson();
 		String msgsToJason = gson.toJson(msgs);

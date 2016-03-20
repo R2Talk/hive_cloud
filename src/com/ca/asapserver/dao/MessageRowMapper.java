@@ -21,11 +21,13 @@ public class MessageRowMapper implements RowMapper<MessageVo> {
 		
 		MessageVo messageVo = new MessageVo();
 		
-		messageVo.setIdMessage(rs.getInt("idMessage"));
+		messageVo.setIdMessage(rs.getInt("idmessage"));
 		messageVo.setText(rs.getString("text"));
-		messageVo.setDate(rs.getDate("date"));
-		messageVo.setIdSenderUser(rs.getInt("idSenderUser"));
-		messageVo.setUser_idUser(rs.getInt("User_idUser"));
+		messageVo.setDatetime(rs.getDate("datetime"));
+		messageVo.setIdFromUser(rs.getInt("idfromuser"));
+		messageVo.setUser_idUser(rs.getInt("user_iduser"));
+		messageVo.setInitiative_idInitiative(rs.getInt("initiative_idinitiative"));
+		messageVo.setDeliverable_idDeliverable(rs.getInt("deliverable_iddeliverable"));
 		
 		return messageVo;
 	}
