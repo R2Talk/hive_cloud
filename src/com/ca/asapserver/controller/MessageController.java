@@ -3,9 +3,11 @@ package com.ca.asapserver.controller;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ca.asapserver.msgmanager.MsgManager;
@@ -20,6 +22,7 @@ import com.google.gson.Gson;
  * @author Rodrigo Carvalho
  *
  */
+
 @RestController
 public class MessageController {
 
@@ -30,7 +33,7 @@ public class MessageController {
 		msgManager.insertMsg(msg);
 	}
 	
-	@RequestMapping(value = "/getMessages", method = RequestMethod.GET, produces = "application/json")	
+	@RequestMapping(value = "/getMessages", method = RequestMethod.GET, produces = "application/json")
 	public String getMessages() { 
 		MsgManager msgManager = new MsgManager();
 		
@@ -38,6 +41,8 @@ public class MessageController {
 		
 		Gson gson = new Gson();
 		String msgsToJason = gson.toJson(messages);
+		
+		System.out.println("messages to jason = "+ msgsToJason);
 		
 		return msgsToJason;
 		
