@@ -5,7 +5,10 @@ import java.util.ArrayList;
 /**
  * MsgRepository
  * 
- * Demo version for message repository. Implemented as a singleton for maintain up to three messages
+ * FOR TEST PURPOSE ONLY
+ * 
+ * Demo version for message repository. Implemented as a singleton for maintain up to three messages.
+ * 
  * @author Rodrigo Carvalho
  *
  */
@@ -28,9 +31,6 @@ public class MocMsgRepository {
 	protected void insertMessage(String msg) {
 		if (msgCollection.size()  > 0){msgCollection.remove(0);}
 		msgCollection.add(0, msg);
-		//index++;
-		//index = (index) % 3;
-		
 	}
 	
 	/**

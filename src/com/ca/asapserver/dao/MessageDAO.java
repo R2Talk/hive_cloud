@@ -22,5 +22,14 @@ public interface MessageDAO {
 	 * @return
 	 */
 	public List<MessageVo> getAllMessages();
+	
+	/**
+	 * insertMessage
+	 * 
+	 * Insert a message into the message repository.
+	 * 
+	 * @return
+	 */
+	public void insertMessage(MessageVo messageVo);
 
 }
