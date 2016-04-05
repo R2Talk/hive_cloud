@@ -16,6 +16,7 @@ public class MessageVo {
 	int idMessage;
 	String text;
 	Date datetime;
+	String nameFromUser;
 	int User_idUser;
 	int idFromUser;
 	int initiative_idInitiative;
@@ -39,6 +40,12 @@ public class MessageVo {
 	}
 	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
+	}
+	public String getNameFromUser() {
+		return nameFromUser;
+	}
+	public void setNameFromUser(String nameFromUser) {
+		this.nameFromUser = nameFromUser;
 	}
 	public int getUser_idUser() {
 		return User_idUser;

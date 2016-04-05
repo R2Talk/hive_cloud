@@ -24,6 +24,7 @@ public class MessageRowMapper implements RowMapper<MessageVo> {
 		messageVo.setIdMessage(rs.getInt("idmessage"));
 		messageVo.setText(rs.getString("text"));
 		messageVo.setDatetime(rs.getDate("datetime"));
+		messageVo.setNameFromUser(rs.getString("name"));
 		messageVo.setIdFromUser(rs.getInt("idfromuser"));
 		messageVo.setUser_idUser(rs.getInt("user_iduser"));
 		messageVo.setInitiative_idInitiative(rs.getInt("initiative_idinitiative"));

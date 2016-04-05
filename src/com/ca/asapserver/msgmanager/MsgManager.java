@@ -25,13 +25,21 @@ public class MsgManager {
 	public MsgManager(){
 	}
 	
-	/*
-	public void insertMsg(String msg) {
-		MocMsgRepository msgRepository = MocMsgRepository.getInstance();
-		msgRepository.insertMessage(msg);
-	}
-	*/
+	// Test Version
+	//
+	//public void insertMsg(String msg) {
+	//	MocMsgRepository msgRepository = MocMsgRepository.getInstance();
+	//	msgRepository.insertMessage(msg);
+	//}
+	//
 	
+	/**
+	 * insertMessage
+	 * 
+	 * insert a message into the message repository
+	 * 
+	 * @param messageVo
+	 */
 	public void insertMessage(MessageVo messageVo) {
 		
 		MessageDAO messageDAO = (MessageDAO) AppContextHelper.getApplicationContext().getBean("messageDAO");
@@ -39,6 +47,13 @@ public class MsgManager {
 		messageDAO.insertMessage(messageVo);
 	}
 
+	/**
+	 * getMessages
+	 * 
+	 * read all messages from repository
+	 * 
+	 * @return
+	 */
 	public List<MessageVo> getMessages() {
 		
 		MessageDAO messageDAO = (MessageDAO) AppContextHelper.getApplicationContext().getBean("messageDAO");
