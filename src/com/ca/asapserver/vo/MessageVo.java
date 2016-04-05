@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * MessageVo
  * 
- * Represents a message and identifies users id of sender and receiver. 
+ * Represents a message.
  * 
  * @author Rodrigo Carvalho
  *
