@@ -32,7 +32,12 @@
 		class="com.ca.asapserver.dao.JdbcMessageDAO">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-
+	
+    <bean id="userDAO"
+	 	 class="com.ca.asapserver.dao.JdbcUserDAO">
+	 	 <property name="dataSource" ref="dataSource"/>
+	 </bean>
+	 
 	<bean id="appContextHelper"
 		class="com.ca.asapserver.springutils.AppContextHelper">
 	</bean>

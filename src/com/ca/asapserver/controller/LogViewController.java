@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ca.asapserver.msgmanager.MsgManager;
+import com.ca.asapserver.message.MsgManager;
 import com.ca.asapserver.vo.MessageVo;
 import com.google.gson.Gson;
 
 /**
- * LogViewControlle
+ * LogViewController
  * 
  * @author Rodrigo Carvalho
  *

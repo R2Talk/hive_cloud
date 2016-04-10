@@ -1,4 +1,4 @@
-package com.ca.asapserver.msgmanager;
+package com.ca.asapserver.message;
 
 import java.util.ArrayList;
 

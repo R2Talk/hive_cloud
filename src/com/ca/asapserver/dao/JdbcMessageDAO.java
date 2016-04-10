@@ -30,9 +30,7 @@ public class JdbcMessageDAO implements MessageDAO {
 	 * 
 	 * Initialize the JdbcTemplate with a DataSource.
 	 * 
-	 * BE WARE:
-	 * 
-	 * This DAO is configured as a Spring Bean, and the framework do the initailization following the Dispatcher xml definition
+	 * BEWARE: This DAO is configured as a Spring Bean, and the framework do the initailization following the Dispatcher xml definition
 	 * 
 	 *  <bean id="dataSource"
  	 *	class="org.apache.commons.dbcp2.BasicDataSource">
