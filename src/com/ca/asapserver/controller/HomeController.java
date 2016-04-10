@@ -11,7 +11,6 @@ import org.springframework.ui.ModelMap;
  * MVC Controller for Hive Home Page View.
  * 
  * @author Rodrigo Carvalho
- *
  */
 @Controller
 @RequestMapping("/home")
