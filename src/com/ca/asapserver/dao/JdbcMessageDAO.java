@@ -30,7 +30,7 @@ public class JdbcMessageDAO implements MessageDAO {
 	 * 
 	 * Initialize the JdbcTemplate with a DataSource.
 	 * 
-	 * BEWARE: This DAO is configured as a Spring Bean, and the framework do the initailization following the Dispatcher xml definition
+	 * BEWARE: This DAO is configured as a Spring Bean, and the framework do the initialization following the Dispatcher xml definition
 	 * 
 	 *  <bean id="dataSource"
  	 *	class="org.apache.commons.dbcp2.BasicDataSource">
@@ -85,7 +85,7 @@ public class JdbcMessageDAO implements MessageDAO {
 		String sql = "INSERT INTO MESSAGE (text, idfromuser, datetime, USER_iduser, INITIATIVE_idinitiative, DELIVERABLE_iddeliverable) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		//insert message using jdbcTemplate 
-		this.jdbcTemplate.update(sql, messageVo.getText(), "2", stringDate, "1", "1", "1");
+		this.jdbcTemplate.update(sql, messageVo.getText(), messageVo.getIdFromUser(), stringDate, "1", "1", "1");
 		
 		System.out.println("Created new Message = " + messageVo.getText());
 		

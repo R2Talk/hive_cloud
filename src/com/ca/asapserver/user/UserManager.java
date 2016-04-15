@@ -36,9 +36,17 @@ public class UserManager {
 		}
 		
 		if (userVo == null){
+			
 			userVo = new UserVo(0, "", "", false);
-		} else if (!userVo.getPassword().equals(password)){
+			
+		} else if (userVo.getPassword().equals(password)){
+			
 			userVo.setPassword("");
+			userVo.setValidated(true);
+			
+		} else {
+			
+			userVo.setPassword("userVo pwd = " + userVo.getPassword() + " password = " + password + new Boolean(userVo.getPassword().equals(password)));
 			userVo.setValidated(false);
 		}
 		
