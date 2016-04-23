@@ -50,7 +50,7 @@ public class MsgManager {
 	/**
 	 * getMessages
 	 * 
-	 * read all messages from repository
+	 * Read all messages from repository
 	 * 
 	 * @return
 	 */
