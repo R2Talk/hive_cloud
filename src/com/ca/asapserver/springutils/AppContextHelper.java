@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Singleton Spring Bean. Implements ApplicationcontextAware and receives a context reference during initialization.
  * Used by any non spring beans class for getting context and access other beans calling the static method getApplicationContext().
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 @Scope("singleton")

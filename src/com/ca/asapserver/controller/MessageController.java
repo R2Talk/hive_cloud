@@ -20,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
 /**
  * MessageController
  * 
- * Rest Controller for sending and consulting user messages
+ * Rest Controller for sending and consulting user messages.
  * 
  * @author Rodrigo Carvalho
  *

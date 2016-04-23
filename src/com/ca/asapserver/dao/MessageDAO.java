@@ -9,7 +9,7 @@ import com.ca.asapserver.vo.MessageVo;
  * 
  * Message Entity DAO interface.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public interface MessageDAO {

@@ -18,7 +18,7 @@ import com.ca.asapserver.vo.UserVo;
  * 
  * JdbcTemplate implementation of User DAO Interface.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class JdbcUserDAO implements UserDAO {

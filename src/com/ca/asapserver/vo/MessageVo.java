@@ -7,7 +7,7 @@ import java.util.Date;
  * 
  * Represents a message.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 

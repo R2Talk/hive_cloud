@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.ModelMap;
 
 /**
- * HomeControlle
+ * HomeController
  * 
  * MVC Controller for Hive Home Page View.
  * 

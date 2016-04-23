@@ -3,6 +3,7 @@
 <head>
 <title>Hive Server Home</title>
 </head>
+
 <body>
    <h1>CA - Hive Server</h1>   
    <p>
@@ -12,4 +13,5 @@
    <p>
    <address>${message}</address>
 </body>
+
 </html>

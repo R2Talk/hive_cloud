@@ -13,7 +13,7 @@ import com.ca.asapserver.vo.UserVo;
  * 
  * Create, delete, update and get user state.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class UserManager {

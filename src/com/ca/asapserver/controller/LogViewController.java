@@ -23,7 +23,6 @@ public class LogViewController {
 	public String logMessages(ModelMap model){ 	
 		
 		List<MessageVo> msgs;
-		
 		MsgManager msgManager = new MsgManager();
 		
 		msgs = msgManager.getMessages();

@@ -12,7 +12,7 @@ import com.ca.asapserver.vo.UserVo;
 import com.google.gson.Gson;
 
 /**
- * Rest Controller for Sign In
+ * Rest Controller for SignIn
  * 
  * @author Rodrigo Carvalho
  *

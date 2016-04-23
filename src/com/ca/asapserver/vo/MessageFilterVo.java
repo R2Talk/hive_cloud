@@ -5,7 +5,7 @@ package com.ca.asapserver.vo;
  *
  * Represents a message filter. Attributes different of null must be used as selectors for retrieving messages.
  *
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class MessageFilterVo {

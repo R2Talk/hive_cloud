@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 
  * Demo version for message repository. Implemented as a singleton for maintain up to three messages.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class MocMsgRepository {

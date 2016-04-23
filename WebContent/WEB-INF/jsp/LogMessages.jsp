@@ -6,12 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
 <body>
    <h1>CA - Asap Server</h1>   
    <p>
    <h2>RECEIVED MESSAGES:</h2>
    <p><p>
-   <h3>${messages}</h3>
-   
+   <h3>${messages}</h3>   
 </body>
+
 </html>

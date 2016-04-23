@@ -12,7 +12,7 @@ import com.ca.asapserver.vo.MessageVo;
  * 
  * Implements RowMapper for use with Spring JdbcTemplate methods.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class MessageRowMapper implements RowMapper<MessageVo> {

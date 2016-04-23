@@ -13,7 +13,7 @@ import com.ca.asapserver.vo.UserVo;
  * 
  * Implements RowMapper for use with Spring JdbcTemplate methods.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class UserRowMapper implements RowMapper<UserVo> {

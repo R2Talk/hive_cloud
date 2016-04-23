@@ -6,6 +6,8 @@ package com.ca.asapserver.vo;
  * Represents the identity, and login validation state of an user.
  * 
  * Client/Server Bridge Object
+ * 
+ * @author Rodrigo Carvalho.
  *
  */
 public class UserVo {

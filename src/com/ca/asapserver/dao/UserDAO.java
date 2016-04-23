@@ -10,7 +10,7 @@ import com.ca.asapserver.vo.UserVo;
  *  
  * User Entity DAO interface.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public interface UserDAO {

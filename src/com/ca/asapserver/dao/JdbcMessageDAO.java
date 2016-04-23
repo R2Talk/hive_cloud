@@ -17,7 +17,7 @@ import com.ca.asapserver.vo.MessageVo;
  * 
  * JdbcTemplate implementation of Message DAO Interface.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class JdbcMessageDAO implements MessageDAO {

@@ -14,7 +14,7 @@ import com.ca.asapserver.vo.MessageVo;
  * 
  * Manages send and consulting messages. Use the DAO classes for access and save messages.
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 public class MsgManager {
