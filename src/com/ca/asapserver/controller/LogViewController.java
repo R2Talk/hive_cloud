@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 /**
  * LogViewController
  * 
- * @author Rodrigo Carvalho
+ * @author Rodrigo Carvalho.
  *
  */
 @Controller
