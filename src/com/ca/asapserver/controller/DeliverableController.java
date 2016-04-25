@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ca.asapserver.deliverable.DeliverableManager;
+import com.ca.asapserver.initiative.DeliverableManager;
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 import com.google.gson.Gson;
@@ -38,6 +38,7 @@ public class DeliverableController {
 	public String getDeliverablesByInitiative(@RequestParam("initiativeVo") String p_initiativeVo) { 
 		Gson gson;	
 		InitiativeVo initiativeVo;
+		List<DeliverableVo> deliverables;
 		
 		//deserialize generic type for List of MessageVo
         gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
@@ -45,9 +46,12 @@ public class DeliverableController {
         initiativeVo = gson.fromJson(p_initiativeVo, initiativeVoType);
 		
 		DeliverableManager deliverableManager = new DeliverableManager();
-		//deliverableManager.getDeliverablesByInitiative(initiativeVo);
+		deliverables = deliverableManager.getDeliverablesByInitiative(initiativeVo);
 		
-		return "";
+		gson = new Gson();
+		String deliverablesToJason = gson.toJson(deliverables);
+		
+		return deliverablesToJason;
 	}
 	
 	/**
@@ -77,11 +81,11 @@ public class DeliverableController {
 	 */
 	@RequestMapping(value = "/updateDeliverable", method = RequestMethod.GET)	
 	public String updateDeliverable(@RequestParam("deliverableVo") String deliverableVo) { 
-		Gson gson;
+		//Gson gson;
 		//MessageVo messageVo;
 		
 		//deserialize generic type for List of MessageVo
-        gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
+        //gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
         //Type messageType = new TypeToken<InitiativeVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
         //messageVo = gson.fromJson(initiativeVo, messageType);
 		

@@ -6,18 +6,17 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 
 /**
- * JdbcDeliverableDAO
+ * JdbcInitiativeDAO
  * 
- * JdbcTemplate implementation of Deliverable DAO Interface.
+ * JdbcTemplate implementation of Initiative DAO Interface.
  * 
  * @author Rodrigo Carvalho.
  *
  */
-public class JdbcDeliverableDAO implements DeliverableDAO {
+public class JdbcInitiativeDAO implements InitiativeDAO {
 
 	//JdbcTemplate is a spring object for boiler plate code for connection management.
 	private JdbcTemplate jdbcTemplate;
@@ -48,35 +47,19 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	
 	/**
-	 * getDeliverablesByInitiative
-	 * 
-	 * Reads end return all deliverables associated with the initiative in the repository (database)
-	 * 
-	 */
-	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo){
-		
-		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId();
-		
-		List<DeliverableVo> deliverables = this.jdbcTemplate.query(sql, new DeliverableRowMapper()); 
-			
-		return deliverables;
-	}
-	
-	/**
-	 * getPrioritizedDeliverables
+	 * getInitiatives
 	 * 
 	 * Reads end return all prioritized deliverables in the repository (database)
 	 * 
 	 */
-	public List<DeliverableVo> getPrioritizedDeliverables(){
+	public List<InitiativeVo> getInitiatives(){
 			
-		String sql = "SELECT * FROM DELIVERABLE WHERE isPriority = 'YES'";
+		String sql = "SELECT * FROM INITIATIVE";
 		
-		List<DeliverableVo> deliverables = this.jdbcTemplate.query(sql, new DeliverableRowMapper()); 
+		List<InitiativeVo> initiatives = this.jdbcTemplate.query(sql, new InitiativeRowMapper()); 
 			
-		return deliverables;
+		return initiatives;
 	}
 	
 	

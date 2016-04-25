@@ -2,7 +2,6 @@ package com.ca.asapserver.dao;
 
 import java.util.List;
 
-import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 
 /**
@@ -13,7 +12,7 @@ import com.ca.asapserver.vo.InitiativeVo;
  * @author Rodrigo Carvalho.
  *
  */
-public interface DeliverableDAO {
+public interface InitiativeDAO {
 	
 	/**
 	 * getPrioritizedDeliverables
@@ -22,13 +21,6 @@ public interface DeliverableDAO {
 	 * 
 	 * @return
 	 */
-	public List<DeliverableVo> getPrioritizedDeliverables();
-	
-	/**
-	 * getDeliverablesByInitiative
-	 * 
-	 * @return
-	 */
-	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo);
+	public List<InitiativeVo> getInitiatives();
 	
 }

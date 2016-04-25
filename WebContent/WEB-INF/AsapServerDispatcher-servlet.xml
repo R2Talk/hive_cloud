@@ -41,6 +41,11 @@
 		 class="com.ca.asapserver.dao.JdbcDeliverableDAO">
 		 <property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+	<bean id="initiativeDAO"
+		 class="com.ca.asapserver.dao.JdbcInitiativeDAO">
+		 <property name="dataSource" ref="dataSource"/>
+	</bean>
 	 	 
 	<bean id="appContextHelper"
 		class="com.ca.asapserver.springutils.AppContextHelper">
