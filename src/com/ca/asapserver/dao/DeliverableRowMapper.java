@@ -35,6 +35,8 @@ public class DeliverableRowMapper implements RowMapper<DeliverableVo> {
 		deliverableVo.setRating((new Integer((rs.getInt("rating"))).toString()));
 		deliverableVo.setStatus(rs.getString("status"));
 		deliverableVo.setTitle(rs.getString("title"));
+		deliverableVo.setCode(rs.getString("code"));
+		deliverableVo.setCurrentusername(rs.getString("currentusername"));
 		
 		return deliverableVo;
 	}

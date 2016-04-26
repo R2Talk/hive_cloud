@@ -28,20 +28,18 @@ public class DeliverableVo {
     private String priorityComment;
     private String prioritizedBy;
     private String deliverableValue;
+    private String code;
+    private String currentusername;
     private String deliverable_isLate;
 
     //
     // CONSTRUCTOR
     //
-
-    /**
-     * Constructor
-     * 
-     */
+    
     public DeliverableVo(){
     	
     }
-    
+
     /**
      * Constructor
      *
@@ -71,7 +69,9 @@ public class DeliverableVo {
                          String isPriority,
                          String priorityComment,
                          String prioritizedBy,
-                         String deliverableValue
+                         String deliverableValue,
+                         String code,
+                         String currentusername
                          ) {
         this.iddeliverable = iddeliverable;
         this.idinitiative = idinitiative;
@@ -86,6 +86,8 @@ public class DeliverableVo {
         this.priorityComment = priorityComment;
         this.prioritizedBy = prioritizedBy;
         this.deliverableValue = deliverableValue;
+        this.code = code;
+        this.currentusername = currentusername;
 
         if (isLate(duedate)){
             this.deliverable_isLate = "true";
@@ -127,6 +129,8 @@ public class DeliverableVo {
                          String priorityComment,
                          String prioritizedBy,
                          String deliverableValue,
+                         String code,
+                         String currentusername,
                          String deliverable_isLate) {
         this.iddeliverable = iddeliverable;
         this.idinitiative = idinitiative;
@@ -141,6 +145,8 @@ public class DeliverableVo {
         this.priorityComment = priorityComment;
         this.prioritizedBy = prioritizedBy;
         this.deliverableValue = deliverableValue;
+        this.code = code;
+        this.currentusername = currentusername;
         this.deliverable_isLate = deliverable_isLate;
     }
 
@@ -265,6 +271,22 @@ public class DeliverableVo {
         this.deliverableValue = deliverableValue;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCurrentusername() {
+        return currentusername;
+    }
+
+    public void setCurrentusername(String currentusername) {
+        this.currentusername = currentusername;
+    }
+
     //
     // HELPER METHOD
     //
@@ -281,8 +303,8 @@ public class DeliverableVo {
         Date dueDate = null;
         Date currentDate = new Date();
         Date yesterday = null;
-        //SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        //SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
             dueDate = ft.parse(dueDateStr);
@@ -303,4 +325,3 @@ public class DeliverableVo {
         return false;
     }
 }
-
