@@ -53,9 +53,9 @@ public class JdbcUserDAO implements UserDAO {
 	}
 	
 	/**
-	 * getAllMessages
+	 * getUsersByName
 	 * 
-	 * Reads end return all messages in the repository (database)
+	 * Reads end return users  with the same name as in parameter
 	 * 
 	 */
 	public List<UserVo> getUsersByName(String userName){
@@ -65,6 +65,47 @@ public class JdbcUserDAO implements UserDAO {
 		List<UserVo> users = this.jdbcTemplate.query(sql, new UserRowMapper()); 
 			
 		return users;
+	}
+	
+	/**
+	 * getUserByEmail
+	 * 
+	 * Reads end return users with the same email as in parameter
+	 * 
+	 */
+	public List<UserVo> getUsersByEmail(String userEmail){
+		
+		String sql = "SELECT iduser, name, password, type, email FROM USER where email = '" + userEmail + "'";
+		
+		List<UserVo> users = this.jdbcTemplate.query(sql, new UserRowMapper()); 
+			
+		return users;
+	}
+	
+	/**
+	 * createUser
+	 * 
+	 * @param userVo
+	 */
+	public UserVo createUser(String name, String email, String password) throws UserAlreadyExistsException {
+		UserVo userVo = null;
+		
+		try {
+			// insert user
+			String insertSql = "INSERT INTO `mydb`.`user` (`name`, `password`, `type`, `email`) VALUES ('" + name + "', '" + password + "', '1', '" + email + "')";
+			int row = this.jdbcTemplate.update(insertSql);
+			
+			// select inserted user by email
+			
+			String selectSql = "SELECT iduser, name, password, type, email FROM USER where email = '" + email + "'";
+			List<UserVo> users = this.jdbcTemplate.query(selectSql, new UserRowMapper());
+			userVo = users.get(0); // TODO: check 
+			
+			return userVo;
+		} catch (Exception e){
+			return new UserVo(1,"","","",false);
+		}
+		
 	}
 	
 }

@@ -15,12 +15,30 @@ import com.ca.asapserver.vo.UserVo;
  */
 public interface UserDAO {
 
-	// getUserByName
-	//
+	/**
+	 * getUsersByName
+	 * 
+	 * @param userName
+	 * @return
+	 */
 	public List<UserVo> getUsersByName(String userName);
 	
-	//public void createUser(UserVo userVo);
-	//public void updateUserPwd(Integer userId, String newPwd);
-	//public void deleteUser(UserVo userVo);
+	/**
+	 * getUsersByEmail
+	 * 
+	 * @param userEmail
+	 * @return
+	 */
+	public List<UserVo> getUsersByEmail(String userEmail);
+	
+	/**
+	 * createUser
+	 * 
+	 * @param userVo
+	 */
+	public UserVo createUser(String name, String email, String password) throws UserAlreadyExistsException;
+	
+	//TODO: public void updateUserPwd(Integer userId, String newPwd);
+	//TODO: public void deleteUser(UserVo userVo);
 	
 }

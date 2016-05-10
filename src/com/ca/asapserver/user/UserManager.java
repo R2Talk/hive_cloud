@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.ca.asapserver.dao.MessageDAO;
+import com.ca.asapserver.dao.UserAlreadyExistsException;
 import com.ca.asapserver.dao.UserDAO;
 import com.ca.asapserver.springutils.AppContextHelper;
 import com.ca.asapserver.vo.UserVo;
@@ -18,17 +19,22 @@ import com.ca.asapserver.vo.UserVo;
  */
 public class UserManager {
 
-	//validateUser
-	//
-	// Checks if there is an user with the same name and password. Returns UserVo with validate flag true or false.
-	//
-	public UserVo validateUser(String name, String password){
+	/**
+	 * validateUser
+	 * 
+	 * Checks if there is an user with the same name and password. Returns UserVo with validate flag true or false.
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	public UserVo validateUser(String email, String password){
 		List<UserVo> users = null;
 		UserVo userVo = null;
 		
 		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
 		
-		users = userDAO.getUsersByName(name);
+		users = userDAO.getUsersByEmail(email);
 		
 		Iterator<UserVo> usersIterator = users.iterator();
 		while (usersIterator.hasNext()) {
@@ -37,7 +43,7 @@ public class UserManager {
 		
 		if (userVo == null){
 			
-			userVo = new UserVo(0, "", "", false);
+			userVo = new UserVo(0, "", "", "", false);
 			
 		} else if (userVo.getPassword().equals(password)){
 			
@@ -46,11 +52,36 @@ public class UserManager {
 			
 		} else {
 			
-			userVo.setPassword("userVo pwd = " + userVo.getPassword() + " password = " + password + new Boolean(userVo.getPassword().equals(password)));
+			userVo.setPassword("");
 			userVo.setValidated(false);
 		}
 		
 		return userVo;
 	} 
 	
+	
+	/**
+	 * createUser
+	 * 
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	public UserVo createUser(String name, String email, String password)  throws NotUniqueEmailException {
+		
+		UserVo userVo = null;
+		
+		try {
+			UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
+		
+			userVo = userDAO.createUser(name, email, password);
+			
+			return userVo;
+			
+		} catch(UserAlreadyExistsException e){
+			throw new NotUniqueEmailException();
+		}
+	}
+		
 }

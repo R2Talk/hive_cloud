@@ -59,7 +59,7 @@ public class JdbcMessageDAO implements MessageDAO {
 	 */
 	public List<MessageVo> getAllMessages(){
 		
-		String sql = "SELECT MESSAGE.idmessage, MESSAGE.text, MESSAGE.datetime, USER.name, MESSAGE.idfromuser, MESSAGE.user_iduser, MESSAGE.initiative_idinitiative, MESSAGE.deliverable_iddeliverable FROM MESSAGE INNER JOIN USER ON MESSAGE.idfromuser = USER.iduser";
+		String sql = "SELECT MESSAGE.idmessage, MESSAGE.text, MESSAGE.datetime, USER.name, MESSAGE.idfromuser, MESSAGE.user_iduser, MESSAGE.initiative_idinitiative, MESSAGE.deliverable_iddeliverable FROM MESSAGE INNER JOIN USER ON MESSAGE.idfromuser = USER.iduser ORDER BY MESSAGE.datetime DESC";
 		
 		List<MessageVo> messages = this.jdbcTemplate.query(sql, new MessageRowMapper()); 
 			

@@ -21,15 +21,15 @@ import com.google.gson.Gson;
 public class SignInController{
    
    @RequestMapping(value = "/signin", method = RequestMethod.GET, produces = "application/json")	
-   public String signin(@RequestParam("name") String name, @RequestParam("password") String password) {
+   public String signin(@RequestParam("email") String email, @RequestParam("password") String password) {
 	  
 	  UserVo userVo = null;
 	  UserManager userManager = null;
-	  System.out.println(name);
+	  System.out.println(email);
 	  System.out.println(password);
 	  
 	  userManager = new UserManager();
-	  userVo = userManager.validateUser(name, password);
+	  userVo = userManager.validateUser(email, password);
 	  
 	  Gson gson = new Gson();
 	  String jasonUserVo = gson.toJson(userVo);

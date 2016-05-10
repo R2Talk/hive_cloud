@@ -25,6 +25,7 @@ public class UserRowMapper implements RowMapper<UserVo> {
 		userVo.setUserId(rs.getInt("iduser"));
 		userVo.setName (rs.getString("name"));
 		userVo.setPassword(rs.getString("password"));
+		userVo.setEmail(rs.getString("email"));
 		userVo.setValidated(true);
 		
 		return userVo;
