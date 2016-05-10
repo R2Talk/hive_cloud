@@ -39,7 +39,6 @@ public class MessageController {
         Type messageType = new TypeToken<MessageVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
         messageVo = gson.fromJson(msg, messageType);
 		
-        System.out.println("sending message : " + messageVo.getText());
         
 		MsgManager msgManager = new MsgManager();
 		msgManager.insertMessage(messageVo);
@@ -56,7 +55,6 @@ public class MessageController {
 		Gson gson = new Gson();
 		String msgsToJason = gson.toJson(messages);
 		
-		System.out.println("messages to jason = "+ msgsToJason);
 		
 		return msgsToJason;
 		

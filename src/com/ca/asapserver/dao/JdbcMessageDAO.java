@@ -79,7 +79,6 @@ public class JdbcMessageDAO implements MessageDAO {
 		Date date = new Date();
 		String stringDate = dateFormat.format(date); 
 		 
-		System.out.println("message date = " + stringDate);
 		
 		//prepare SQL for inserting message. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
 		String sql = "INSERT INTO MESSAGE (text, idfromuser, datetime, USER_iduser, INITIATIVE_idinitiative, DELIVERABLE_iddeliverable) VALUES (?, ?, ?, ?, ?, ?)";
@@ -87,7 +86,6 @@ public class JdbcMessageDAO implements MessageDAO {
 		//insert message using jdbcTemplate 
 		this.jdbcTemplate.update(sql, messageVo.getText(), messageVo.getIdFromUser(), stringDate, "1", "1", "1");
 		
-		System.out.println("Created new Message = " + messageVo.getText());
 		
 		return;
 		

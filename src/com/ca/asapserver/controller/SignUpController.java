@@ -27,9 +27,6 @@ public class SignUpController{
 	  UserVo userVo = null;
 	  UserManager userManager = null;
 	  
-	  System.out.println(name);
-	  System.out.println(email);
-	  System.out.println(password);
 	  
 	  try {
 		  userManager = new UserManager();
@@ -37,7 +34,7 @@ public class SignUpController{
 	  
 		  Gson gson = new Gson();
 		  String jasonUserVo = gson.toJson(userVo);
-		
+		  
 		  return jasonUserVo;
 	  } catch (NotUniqueEmailException e){
 		  return "";
