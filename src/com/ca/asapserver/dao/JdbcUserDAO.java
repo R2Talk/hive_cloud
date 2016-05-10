@@ -92,7 +92,7 @@ public class JdbcUserDAO implements UserDAO {
 		
 		try {
 			// insert user
-			String insertSql = "INSERT INTO USER (`name`, `password`, `type`, `email`) VALUES ('" + name + "', '" + password + "', '1', '" + email + "')";
+			String insertSql = "INSERT INTO `mydb`.`USER` (`name`, `password`, `type`, `email`) VALUES ('" + name + "', '" + password + "', '1', '" + email + "')";
 			int row = this.jdbcTemplate.update(insertSql);
 			
 			// select inserted user by email
