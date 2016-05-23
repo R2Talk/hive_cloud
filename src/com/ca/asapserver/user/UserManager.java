@@ -77,6 +77,8 @@ public class UserManager {
 		
 			userVo = userDAO.createUser(name, email, password);
 			
+			//TODO: call function to check if there are invites pending for the user email
+			
 			return userVo;
 			
 		} catch(UserAlreadyExistsException e){
