@@ -16,11 +16,29 @@ import com.ca.asapserver.vo.InitiativeVo;
  */
 public class InitiativeManager {
 
+	/**
+	 * getInitiatives
+	 * 
+	 * @return
+	 */
 	public List<InitiativeVo> getInitiatives(){
 		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
 		
 		return initiativeDAO.getInitiatives();
 		
+	}
+	
+	/**
+	 * createInitiative
+	 * 
+	 * @param initiativeVo
+	 * @return
+	 */
+	public InitiativeVo createInitiative(InitiativeVo initiativeVo, int userId){
+				
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.createInitiative(initiativeVo, userId);
 	}
 	
 }

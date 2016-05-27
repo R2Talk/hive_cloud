@@ -76,15 +76,14 @@ public class InitiativeController {
 		Gson gson = null;
 		InitiativeVo initiativeVo = null;
 		
-        //create InitiativeVo
-		initiativeVo = new InitiativeVo("101", title, description);
+        //prepare InitiativeVo
+		initiativeVo = new InitiativeVo("", title, description);
 		
-		//check if initiative already exist, in this case return null
-		
-		//insert InitiativeVo using DAO object
+		//create InitiativeVo using DAO object
+		InitiativeManager initiativeManager = new InitiativeManager();
+		//create and return newly created initiative with auto incremented created id
+		initiativeVo = initiativeManager.createInitiative(initiativeVo, Integer.parseInt(userId));
         
-		//read newly created initiative by name to get the created id
-		
         //associate user with initiative using DAO object
         
         //Return initiativeVo newly created

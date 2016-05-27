@@ -1,10 +1,15 @@
 package com.ca.asapserver.dao;
 
+import java.sql.SQLException;
+import java.sql.Connection;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import com.ca.asapserver.vo.InitiativeVo;
 
@@ -50,7 +55,7 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 	/**
 	 * getInitiatives
 	 * 
-	 * Reads end return all prioritized deliverables in the repository (database)
+	 * Reads end return all initiatives in the repository (database)
 	 * 
 	 */
 	public List<InitiativeVo> getInitiatives(){
@@ -62,5 +67,65 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 		return initiatives;
 	}
 	
+	/**
+	 * createInitiative
+	 * 
+	 * Create initiative
+	 * 
+	 * @return
+	 */
+	public InitiativeVo createInitiative(InitiativeVo initiativeVo, int userId) { 
+				 
+		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
+		final String sql = "INSERT INTO INITIATIVE (title, description, idowneruser) VALUES (?, ?, ?)";
+		final String stmtTitle = initiativeVo.getInitiativeTitle();
+		final String stmtDescription = initiativeVo.getInitiativeDescription();
+		final int stmtUserId = userId;
+		
+		//create initiative and return the newly created initiativeVo with auto increment id identified
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+    	this.jdbcTemplate.update(
+    	    new PreparedStatementCreator() {
+				@Override
+				public java.sql.PreparedStatement createPreparedStatement(
+						java.sql.Connection con) throws SQLException {
+					java.sql.PreparedStatement pst =
+	    	                (java.sql.PreparedStatement) con.prepareStatement(sql, new String[] {"id"});
+	    	            pst.setString(1, stmtTitle);
+	    	            pst.setString(2, stmtDescription);
+	    	            pst.setInt(3, stmtUserId);
+	    	            return pst;
+				}
+    	    },
+    	    keyHolder);
+    	
+    	Long autoincrementedId = (Long)keyHolder.getKey();
+		
+		initiativeVo.setInitiativeId(autoincrementedId.toString());
+		
+		bindUserToInitiative(initiativeVo, userId);
+		
+		return initiativeVo;		
+	}
+	
+	/**
+	 * bindUserToInitiative
+	 * 
+	 * @param initiativeVo
+	 * @param userId
+	 */
+	public void bindUserToInitiative(InitiativeVo initiativeVo, int userId){
+		
+		String stmtInitiativeId = initiativeVo.getInitiativeId();
+		String stmtUserId = String.valueOf(userId);
+		
+		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
+		String sql = "INSERT INTO USER_INITIATIVE (USER_iduser,INITIATIVE_idinitiative) VALUES (?, ?)";
+		//insert using jdbcTemplate 
+		this.jdbcTemplate.update(sql, Long.valueOf(stmtUserId), Long.valueOf(stmtInitiativeId));
+		
+		return;
+	}
 	
 }
+	
