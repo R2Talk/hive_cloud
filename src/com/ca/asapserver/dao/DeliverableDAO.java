@@ -31,4 +31,13 @@ public interface DeliverableDAO {
 	 */
 	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo);
 	
+	/**
+	 * createDeliverable
+	 * 
+	 * Create deliverable
+	 * 
+	 * @return
+	 */
+	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId);
+	
 }

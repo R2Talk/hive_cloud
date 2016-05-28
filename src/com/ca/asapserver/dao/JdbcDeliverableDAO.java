@@ -1,10 +1,14 @@
 package com.ca.asapserver.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
@@ -79,5 +83,59 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		return deliverables;
 	}
 	
+	/**
+	 * createDeliverable
+	 * 
+	 * Create deliverable
+	 * 
+	 * @return
+	 */
+	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId) { //TODO: not using userId to bind user to deliverable - need refactoring 
+				 
+		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
+		final String sql = "INSERT INTO DELIVERABLE (title, description, duedate, rating, status, idresponsibleuser, "
+				+ "initiative_idinitiative, isPriority, deliverableValue) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		final String stmtTitle = deliverableVo.getTitle();
+		final String stmtDescription = deliverableVo.getDescription();
+		final String stmtDueDate = deliverableVo.getDuedate();
+		final String stmtRating = deliverableVo.getRating();
+		final String stmtStatus = deliverableVo.getStatus();
+		final String stmtIdResponsibleUser = deliverableVo.getIdresponsibleuser();
+		final String stmtIdInitiative = deliverableVo.getIdinitiative();
+		final String stmtIsPriority = deliverableVo.getIsPriority();
+		final String stmtDeliverableValue = deliverableVo.getDeliverableValue();
+		
+		//create initiative and return the newly created initiativeVo with auto increment id identified
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+    	this.jdbcTemplate.update(
+    	    new PreparedStatementCreator() {
+				@Override
+				public java.sql.PreparedStatement createPreparedStatement(
+						java.sql.Connection con) throws SQLException {
+					java.sql.PreparedStatement pst =
+	    	                (java.sql.PreparedStatement) con.prepareStatement(sql, new String[] {"id"});
+	    	            pst.setString(1, stmtTitle);
+	    	            pst.setString(2, stmtDescription);
+	    	            pst.setString(3, stmtDueDate);
+	    	            pst.setInt(4, Integer.parseInt(stmtRating));
+	    	            pst.setString(5, stmtStatus);
+	    	            pst.setInt(6, Integer.parseInt(stmtIdResponsibleUser));
+	    	            pst.setInt(7, Integer.parseInt(stmtIdInitiative));
+	    	            pst.setString(8, stmtIsPriority);
+	    	            pst.setInt(9, Integer.parseInt(stmtDeliverableValue));	    	            
+	    	            
+	    	            return pst;
+				}
+    	    },
+    	    keyHolder);
+    	
+    	Long autoincrementedId = (Long)keyHolder.getKey();
+		
+		deliverableVo.setIddeliverable(autoincrementedId.toString());
+		
+		return deliverableVo;		
+	}
 	
 }

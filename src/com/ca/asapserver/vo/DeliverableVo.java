@@ -56,6 +56,8 @@ public class DeliverableVo {
      * @param priorityComment
      * @param prioritizedBy
      * @param deliverableValue
+     * @param code
+     * @param currentUserName
      */
     public DeliverableVo(String iddeliverable,
                          String idinitiative,

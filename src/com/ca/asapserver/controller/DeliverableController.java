@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ca.asapserver.initiative.DeliverableManager;
+import com.ca.asapserver.initiative.InitiativeManager;
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 import com.google.gson.Gson;
@@ -72,6 +73,40 @@ public class DeliverableController {
 		return deliverablesToJason;
 		
 	}	
+	
+	/**
+	 * createDeliverable
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/createDeliverable", method = RequestMethod.GET, produces = "application/json")
+	public String createDeliverable(@RequestParam("title") String title, 
+			@RequestParam("description") String description, 
+			@RequestParam("date") String date,
+			@RequestParam("status") String status,
+			@RequestParam("userId") String userId,
+			@RequestParam("initiativeId") String initiativeId,
+			@RequestParam("isPriority") String isPriority) { 
+			
+		Gson gson = null;
+		DeliverableVo deliverableVo = null;
+		
+        //prepare InitiativeVo
+		deliverableVo = new DeliverableVo("", initiativeId, title, description, 
+				"", status, date, userId, "3", isPriority, "", "", "0", "", "");
+		
+		//create InitiativeVo using DAO object
+		DeliverableManager deliverableManager = new DeliverableManager();
+		//create and return newly created initiative with auto incremented created id
+		deliverableVo = deliverableManager.createDeliverable(deliverableVo, Integer.parseInt(userId));
+        
+        //Return initiativeVo newly created
+		gson = new Gson();
+		String jasonDeliverableVo = gson.toJson(deliverableVo);
+		
+		return jasonDeliverableVo;
+		
+	}
 	
 	/**
 	 * updateDeliverable
