@@ -38,7 +38,14 @@ public interface UserDAO {
 	 */
 	public UserVo createUser(String name, String email, String password) throws UserAlreadyExistsException;
 	
-	//TODO: public void updateUserPwd(Integer userId, String newPwd);
-	//TODO: public void deleteUser(UserVo userVo);
+	/**
+	 * removeUserDeliverableAssociation
+	 * 
+	 * @param deliverableId
+	 */
+	public void removeUserDeliverableAssociation(int deliverableId);
 	
+	//TODO: public void updateUserPwd(Integer userd, String newPwd);
+	//TODO: public void deleteUser(UserVo userVo);
+		
 }

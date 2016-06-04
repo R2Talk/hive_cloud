@@ -31,5 +31,14 @@ public interface MessageDAO {
 	 * @return
 	 */
 	public void insertMessage(MessageVo messageVo);
+	
+	/**
+	 * deleteMessagesByDeliverableId
+	 * 
+	 * Delete all messages associated with a determined deliverable
+	 * 
+	 * @return
+	 */
+	public void deleteMessagesByDeliverableId(int deliverableId);
 
 }

@@ -97,19 +97,33 @@ public class JdbcUserDAO implements UserDAO {
 			//insert message using jdbcTemplate 
 			this.jdbcTemplate.update(insertSql, name, password, "1", email);
 			
-			//int row = this.jdbcTemplate.update(insertSql);
-			
 			// select inserted user by email
 			
 			String selectSql = "SELECT iduser, name, password, type, email FROM USER where email = '" + email + "'";
 			List<UserVo> users = this.jdbcTemplate.query(selectSql, new UserRowMapper());
-			userVo = users.get(0); // TODO: check 
+			userVo = users.get(0); // TODO: review code to use auto increment place holder as in createDeliverable 
 			
 			return userVo;
+			
 		} catch (Exception e){
-			return new UserVo(1,"","","",false);
+			//TODO: change for exception throw. business object should decide for return user with validation as false
+			return new UserVo(1,"","","",false); 
 		}
 		
 	}
+	
+	/**
+	 * removeUserDeliverableAssociation
+	 * 
+	 * @param deliverableId
+	 */
+	public void removeUserDeliverableAssociation(int deliverableId){ //TODO: Need refactoring to throw exceptions
+		
+		//Delete deliverable messages  
+		String sql = "DELETE FROM USER_DELIVERABLE WHERE DELIVERABLE_iddeliverable = ?";
+		this.jdbcTemplate.update(sql, new Object[] { deliverableId });
+				
+	}
+	
 	
 }

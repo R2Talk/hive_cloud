@@ -61,4 +61,17 @@ public class MsgManager {
 		return messageDAO.getAllMessages();
 	}
 	
+	/**
+	 * deleteMessagesByDeliverableId
+	 * 
+	 * Delete all messages associated with determined deliverable
+	 * 
+	 * @param deliverableId
+	 */
+	public void deleteMessagesByDeliverableId(int deliverableId) { //TODO: Need re-factoring for exception throw
+		
+		MessageDAO messageDAO = (MessageDAO) AppContextHelper.getApplicationContext().getBean("messageDAO");
+		
+		messageDAO.deleteMessagesByDeliverableId(deliverableId);
+	}
 }

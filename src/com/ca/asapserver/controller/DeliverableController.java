@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ca.asapserver.initiative.DeliverableManager;
 import com.ca.asapserver.initiative.InitiativeManager;
+import com.ca.asapserver.message.MsgManager;
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 import com.google.gson.Gson;
@@ -95,7 +96,7 @@ public class DeliverableController {
 		deliverableVo = new DeliverableVo("", initiativeId, title, description, 
 				"", status, date, userId, "3", isPriority, "", "", "0", "", "");
 		
-		//create InitiativeVo using DAO object
+		//create Deliverable
 		DeliverableManager deliverableManager = new DeliverableManager();
 		//create and return newly created initiative with auto incremented created id
 		deliverableVo = deliverableManager.createDeliverable(deliverableVo, Integer.parseInt(userId));
@@ -109,6 +110,23 @@ public class DeliverableController {
 	}
 	
 	/**
+	 * deleteDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	@RequestMapping(value = "/deleteDeliverable", method = RequestMethod.GET)	
+	public void deleteDeliverable(@RequestParam("deliverableId") String deliverableId) { //TODO: Need refactoring to throw exceptions 
+		
+		//delete Deliverable
+		DeliverableManager deliverableManager = new DeliverableManager();
+		//create and return newly created initiative with auto incremented created id
+		deliverableManager.deleteDeliverable(Integer.parseInt(deliverableId));
+				
+		return;
+	}
+	
+	/**
 	 * updateDeliverable
 	 * 
 	 * @param deliverableVo
@@ -116,16 +134,8 @@ public class DeliverableController {
 	 */
 	@RequestMapping(value = "/updateDeliverable", method = RequestMethod.GET)	
 	public String updateDeliverable(@RequestParam("deliverableVo") String deliverableVo) { 
-		//Gson gson;
-		//MessageVo messageVo;
 		
-		//deserialize generic type for List of MessageVo
-        //gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
-        //Type messageType = new TypeToken<InitiativeVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
-        //messageVo = gson.fromJson(initiativeVo, messageType);
-		
-		//MsgManager msgManager = new MsgManager();
-		//msgManager.insertMessage(messageVo);
+		//TODO: write code for update deliverable based in deliverableVo and id.
 		
 		return "";
 	}

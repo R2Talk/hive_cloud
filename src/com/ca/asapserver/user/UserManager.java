@@ -85,5 +85,19 @@ public class UserManager {
 			throw new NotUniqueEmailException();
 		}
 	}
+	
+	/**
+	 * removeUserDeliverableAssociation
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void removeUserDeliverableAssociation(int deliverableId)  { //TODO: Need refactoring to throw exceptions
 		
+		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
+		
+		userDAO.removeUserDeliverableAssociation(deliverableId);
+		
+		return;
+	}
 }

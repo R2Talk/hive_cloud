@@ -38,7 +38,11 @@ public class InitiativeManager {
 				
 		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
 		
-		return initiativeDAO.createInitiative(initiativeVo, userId);
+		initiativeVo = initiativeDAO.createInitiative(initiativeVo, userId);
+		
+		initiativeDAO.bindUserToInitiative(initiativeVo, userId); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
+		
+		return initiativeVo; 
 	}
 	
 }

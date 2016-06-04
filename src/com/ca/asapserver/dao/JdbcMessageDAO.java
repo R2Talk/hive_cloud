@@ -90,4 +90,20 @@ public class JdbcMessageDAO implements MessageDAO {
 		return;
 		
 	}
+	
+	/**
+	 * deleteMessagesByDeliverableId
+	 * 
+	 * Delete all messages associated with a determined deliverable
+	 * 
+	 * @return
+	 */
+	public void deleteMessagesByDeliverableId(int deliverableId){ //TODO: need re-factoring to throw exception
+		
+		//Delete deliverable messages  
+		String deleteMessagesByDeliverableIdSql = "DELETE FROM MESSAGE WHERE DELIVERABLE_iddeliverable = ?";
+		this.jdbcTemplate.update(deleteMessagesByDeliverableIdSql, new Object[] { deliverableId });
+		
+		return;
+	}
 }

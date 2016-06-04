@@ -138,4 +138,18 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		return deliverableVo;		
 	}
 	
+	/**
+	 * deleteDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void deleteDeliverable(int deliverableId){ //TODO: need re-factoring to throw exception
+		
+		//Delete deliverable
+		String deleteDeliverableSql = "DELETE FROM DELIVERABLE WHERE iddeliverable = ?";
+		this.jdbcTemplate.update(deleteDeliverableSql, new Object[] { deliverableId });
+		
+		return;
+	}
 }

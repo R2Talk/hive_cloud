@@ -103,8 +103,6 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 		
 		initiativeVo.setInitiativeId(autoincrementedId.toString());
 		
-		bindUserToInitiative(initiativeVo, userId);
-		
 		return initiativeVo;		
 	}
 	

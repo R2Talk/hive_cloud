@@ -40,4 +40,12 @@ public interface DeliverableDAO {
 	 */
 	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId);
 	
+	/**
+	 * deleteDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void deleteDeliverable(int deliverableId);
+	
 }
