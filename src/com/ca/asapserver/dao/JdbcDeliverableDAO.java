@@ -52,7 +52,6 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	
 	/**
 	 * getDeliverablesByInitiative
 	 * 
@@ -62,6 +61,8 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo){
 		
 		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId();
+		
+		//String sql = "SELECT DELIVERABLE.iddeliverable, ..., USER.name FROM DELIVERABLE INNER JOIN USER ON DELIVERABLE.idresponsibleuser = USER.iduser"
 		
 		List<DeliverableVo> deliverables = this.jdbcTemplate.query(sql, new DeliverableRowMapper()); 
 			
@@ -90,12 +91,12 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	 * 
 	 * @return
 	 */
-	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId) { //TODO: not using userId to bind user to deliverable - need refactoring 
+	public DeliverableVo createDeliverable(DeliverableVo deliverableVo) {  
 				 
 		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
 		final String sql = "INSERT INTO DELIVERABLE (title, description, duedate, rating, status, idresponsibleuser, "
-				+ "initiative_idinitiative, isPriority, deliverableValue) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "initiative_idinitiative, isPriority, deliverableValue, currentUserName) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		final String stmtTitle = deliverableVo.getTitle();
 		final String stmtDescription = deliverableVo.getDescription();
@@ -106,6 +107,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		final String stmtIdInitiative = deliverableVo.getIdinitiative();
 		final String stmtIsPriority = deliverableVo.getIsPriority();
 		final String stmtDeliverableValue = deliverableVo.getDeliverableValue();
+		final String stmtCurrentUserName = deliverableVo.getCurrentusername();
 		
 		//create initiative and return the newly created initiativeVo with auto increment id identified
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -124,7 +126,8 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	    	            pst.setInt(6, Integer.parseInt(stmtIdResponsibleUser));
 	    	            pst.setInt(7, Integer.parseInt(stmtIdInitiative));
 	    	            pst.setString(8, stmtIsPriority);
-	    	            pst.setInt(9, Integer.parseInt(stmtDeliverableValue));	    	            
+	    	            pst.setInt(9, Integer.parseInt(stmtDeliverableValue));
+	    	            pst.setString(10, stmtCurrentUserName);
 	    	            
 	    	            return pst;
 				}
@@ -150,6 +153,33 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		String deleteDeliverableSql = "DELETE FROM DELIVERABLE WHERE iddeliverable = ?";
 		this.jdbcTemplate.update(deleteDeliverableSql, new Object[] { deliverableId });
 		
+		return;
+	}
+	
+	/**
+	 * setPriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void setPriority(DeliverableVo deliverableVo){
+		
+		String sql = "UPDATE DELIVERABLE SET isPriority='YES', prioritiyComment='" + deliverableVo.getPriorityComment() + "', prioritizedBy='" + deliverableVo.getPrioritizedBy() + "' WHERE iddeliverable=" + deliverableVo.getIddeliverable();
+		this.jdbcTemplate.update(sql);
+				
+		return;
+			
+	}
+	
+	/**
+	 * resetPriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void resetPriority(DeliverableVo deliverableVo){
+		
+		String sql = "UPDATE DELIVERABLE SET isPriority='NO' WHERE iddeliverable=" + deliverableVo.getIddeliverable();
+		this.jdbcTemplate.update(sql);
+				
 		return;
 	}
 }

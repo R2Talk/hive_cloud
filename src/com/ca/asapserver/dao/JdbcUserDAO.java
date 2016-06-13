@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -60,7 +61,7 @@ public class JdbcUserDAO implements UserDAO {
 	 */
 	public List<UserVo> getUsersByName(String userName){
 		
-		String sql = "SELECT iduser, name, password, type FROM USER where name = '" + userName + "'";
+		String sql = "SELECT iduser, name, password, type, email FROM USER where name = '" + userName + "'";
 		
 		List<UserVo> users = this.jdbcTemplate.query(sql, new UserRowMapper()); 
 			
@@ -125,5 +126,23 @@ public class JdbcUserDAO implements UserDAO {
 				
 	}
 	
-	
+	/**
+	 * getUserById
+	 * 
+	 * @return
+	 */
+	public UserVo getUserById(int userId) {
+		UserVo userVo = null;
+		
+		String sql = "SELECT iduser, name, password, type, email FROM USER where iduser = '" + userId + "'";
+		
+		List<UserVo> users = this.jdbcTemplate.query(sql, new UserRowMapper()); 
+			
+		Iterator<UserVo> usersIterator = users.iterator();
+		while (usersIterator.hasNext()) {
+			userVo = usersIterator.next();
+		}
+		
+		return userVo;
+	}
 }

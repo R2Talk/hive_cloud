@@ -45,6 +45,13 @@ public interface UserDAO {
 	 */
 	public void removeUserDeliverableAssociation(int deliverableId);
 	
+	/**
+	 * getUserById
+	 * 
+	 * @return
+	 */
+	public UserVo getUserById(int userId);
+	
 	//TODO: public void updateUserPwd(Integer userd, String newPwd);
 	//TODO: public void deleteUser(UserVo userVo);
 		

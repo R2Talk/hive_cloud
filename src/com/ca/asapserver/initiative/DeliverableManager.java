@@ -9,6 +9,7 @@ import com.ca.asapserver.springutils.AppContextHelper;
 import com.ca.asapserver.user.UserManager;
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
+import com.ca.asapserver.vo.UserVo;
 
 /**
  * DeliverableManager
@@ -47,9 +48,18 @@ public class DeliverableManager {
 	 */
 	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId){
 				
+		//Get user name
+		UserManager userManager = new UserManager();
+		
+		UserVo userVo = userManager.getUserById(userId);
+		
+		//update deliverableVo
+		deliverableVo.setCurrentusername(userVo.getName());
+		
+		//create deliverable
 		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
 		
-		return deliverableDAO.createDeliverable(deliverableVo, userId);
+		return deliverableDAO.createDeliverable(deliverableVo);
 	}
 	
 	/**
@@ -76,4 +86,28 @@ public class DeliverableManager {
 		return;
 	}
 	
+	/**
+	 * setDeliverablePriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void setDeliverablePriority(DeliverableVo deliverableVo){
+		
+		//set deliverable priority
+		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
+		deliverableDAO.setPriority(deliverableVo);
+		
+	}
+	
+	/**
+	 * resetDeliverablePriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void resetDeliverablePriority(DeliverableVo deliverableVo){
+		
+		//reset deliverable priority
+		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
+		deliverableDAO.resetPriority(deliverableVo);
+	}
 }

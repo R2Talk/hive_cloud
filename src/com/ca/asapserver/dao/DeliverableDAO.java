@@ -38,7 +38,7 @@ public interface DeliverableDAO {
 	 * 
 	 * @return
 	 */
-	public DeliverableVo createDeliverable(DeliverableVo deliverableVo, int userId);
+	public DeliverableVo createDeliverable(DeliverableVo deliverableVo);
 	
 	/**
 	 * deleteDeliverable
@@ -47,5 +47,19 @@ public interface DeliverableDAO {
 	 * @return
 	 */
 	public void deleteDeliverable(int deliverableId);
+	
+	/**
+	 * setPriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void setPriority(DeliverableVo deliverableVo);
+	
+	/**
+	 * resetPriority
+	 * 
+	 * @param deliverableVo
+	 */
+	public void resetPriority(DeliverableVo deliverableVo);
 	
 }

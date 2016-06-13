@@ -29,6 +29,12 @@ import com.google.gson.reflect.TypeToken;
 @RestController
 public class MessageController {
 
+	/**
+	 * sendMessage
+	 * 
+	 * @param msg
+	 * @return
+	 */
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.GET)	
 	public String sendMessage(@RequestParam("msg") String msg) { 
 		Gson gson;
@@ -45,7 +51,12 @@ public class MessageController {
 		
 		return "Message delivered";
 	}
-	
+
+	/**
+	 * getMessages 
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/getMessages", method = RequestMethod.GET, produces = "application/json")
 	public String getMessages() { 
 		MsgManager msgManager = new MsgManager();

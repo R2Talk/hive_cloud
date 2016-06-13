@@ -100,4 +100,19 @@ public class UserManager {
 		
 		return;
 	}
+	
+	/**
+	 * getUserById
+	 * 
+	 * @return
+	 */
+	public UserVo getUserById(int userId) {
+		
+		UserVo userVo = null;
+		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
+		
+		userVo = userDAO.getUserById(userId);
+		
+		return userVo;
+	}
 }

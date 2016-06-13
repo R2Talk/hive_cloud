@@ -14,6 +14,7 @@ import com.ca.asapserver.initiative.InitiativeManager;
 import com.ca.asapserver.message.MsgManager;
 import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
+import com.ca.asapserver.vo.MessageVo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -126,17 +127,48 @@ public class DeliverableController {
 		return;
 	}
 	
+	
 	/**
-	 * updateDeliverable
+	 * setDeliverablePriority
 	 * 
 	 * @param deliverableVo
 	 * @return
 	 */
-	@RequestMapping(value = "/updateDeliverable", method = RequestMethod.GET)	
-	public String updateDeliverable(@RequestParam("deliverableVo") String deliverableVo) { 
+	@RequestMapping(value = "/setDeliverablePriority", method = RequestMethod.GET)	
+	public String setDeliverablePriority(@RequestParam("jasonDeliverableVo") String jasonDeliverableVo) { 
+		Gson gson;
+		DeliverableVo deliverableVo;
 		
-		//TODO: write code for update deliverable based in deliverableVo and id.
+		//deserialize generic type 
+        gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
+        Type deliverableType = new TypeToken<DeliverableVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
+        deliverableVo = gson.fromJson(jasonDeliverableVo, deliverableType);
+	
+        DeliverableManager deliverableManager = new DeliverableManager();
+        deliverableManager.setDeliverablePriority(deliverableVo);
+        
+		return "";
+	}
+	
+	/**
+	 * resetDeliverablePriority
+	 * 
+	 * @param deliverableVo
+	 * @return
+	 */
+	@RequestMapping(value = "/resetDeliverablePriority", method = RequestMethod.GET)	
+	public String resetDeliverablePriority(@RequestParam("jasonDeliverableVo") String jasonDeliverableVo) { 
+		Gson gson;
+		DeliverableVo deliverableVo;
 		
+		//deserialize generic type 
+        gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
+        Type deliverableType = new TypeToken<DeliverableVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
+        deliverableVo = gson.fromJson(jasonDeliverableVo, deliverableType);
+	
+        DeliverableManager deliverableManager = new DeliverableManager();
+        deliverableManager.resetDeliverablePriority(deliverableVo);
+        
 		return "";
 	}
 }
