@@ -29,7 +29,6 @@ public class InitiativeManager {
 		initiativeVo = initiativeDAO.createInitiative(initiativeVo, userId);
 		
 		initiativeDAO.bindUserToInitiative(initiativeVo, userId); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
-		initiativeDAO.bindUserToInitiative(initiativeVo, 3); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
 		
 		return initiativeVo; 
 	}
