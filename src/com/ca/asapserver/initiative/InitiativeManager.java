@@ -17,18 +17,6 @@ import com.ca.asapserver.vo.InitiativeVo;
 public class InitiativeManager {
 
 	/**
-	 * getInitiatives
-	 * 
-	 * @return
-	 */
-	public List<InitiativeVo> getInitiatives(){
-		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
-		
-		return initiativeDAO.getInitiatives();
-		
-	}
-	
-	/**
 	 * createInitiative
 	 * 
 	 * @param initiativeVo
@@ -41,8 +29,32 @@ public class InitiativeManager {
 		initiativeVo = initiativeDAO.createInitiative(initiativeVo, userId);
 		
 		initiativeDAO.bindUserToInitiative(initiativeVo, userId); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
+		initiativeDAO.bindUserToInitiative(initiativeVo, 3); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
 		
 		return initiativeVo; 
+	}
+	
+	/**
+	 * getInitiatives
+	 * 
+	 * @return
+	 */
+	public List<InitiativeVo> getInitiatives(){
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.getInitiatives();
+		
+	}
+	
+	/**
+	 * getInitiativesByUserId
+	 * 
+	 * @return
+	 */
+	public List<InitiativeVo> getInitiativesByUserId(String userId){
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.getInitiativesByUserId(userId);
 	}
 	
 }

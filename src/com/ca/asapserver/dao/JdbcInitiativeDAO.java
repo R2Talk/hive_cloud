@@ -53,21 +53,6 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 	}
 	
 	/**
-	 * getInitiatives
-	 * 
-	 * Reads end return all initiatives in the repository (database)
-	 * 
-	 */
-	public List<InitiativeVo> getInitiatives(){
-			
-		String sql = "SELECT * FROM INITIATIVE";
-		
-		List<InitiativeVo> initiatives = this.jdbcTemplate.query(sql, new InitiativeRowMapper()); 
-			
-		return initiatives;
-	}
-	
-	/**
 	 * createInitiative
 	 * 
 	 * Create initiative
@@ -123,6 +108,37 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 		this.jdbcTemplate.update(sql, Long.valueOf(stmtUserId), Long.valueOf(stmtInitiativeId));
 		
 		return;
+	}
+	
+	/**
+	 * getInitiatives
+	 * 
+	 * Reads end return all initiatives in the repository (database)
+	 * 
+	 */
+	public List<InitiativeVo> getInitiatives(){
+			
+		String sql = "SELECT * FROM INITIATIVE";
+		
+		List<InitiativeVo> initiatives = this.jdbcTemplate.query(sql, new InitiativeRowMapper()); 
+			
+		return initiatives;
+	}
+	
+	/**
+	 * getInitiativesByUserId
+	 * 
+	 * Returns List with all user initiatives persisted in the database
+	 * 
+	 * @return
+	 */
+	public List<InitiativeVo> getInitiativesByUserId(String userId){
+		
+		String sql = "SELECT INITIATIVE.*, USER_INITIATIVE.* FROM INITIATIVE INNER JOIN USER_INITIATIVE ON INITIATIVE.idinitiative = USER_INITIATIVE.INITIATIVE_idinitiative WHERE USER_INITIATIVE.USER_iduser=" + userId;
+		
+		List<InitiativeVo> initiatives = this.jdbcTemplate.query(sql, new InitiativeRowMapper()); 
+			
+		return initiatives;
 	}
 	
 }

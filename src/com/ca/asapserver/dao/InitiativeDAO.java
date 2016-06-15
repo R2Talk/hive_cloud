@@ -16,15 +16,6 @@ import com.ca.asapserver.vo.UserVo;
 public interface InitiativeDAO {
 	
 	/**
-	 * getPrioritizedDeliverables
-	 * 
-	 * Returns List with all initiatives persisted in the database
-	 * 
-	 * @return
-	 */
-	public List<InitiativeVo> getInitiatives();
-	
-	/**
 	 * createInitiative
 	 * 
 	 * Create initiative
@@ -41,4 +32,21 @@ public interface InitiativeDAO {
 	 */
 	public void bindUserToInitiative(InitiativeVo initiativeVo, int userId);
 	
+	/**
+	 * getInitiatives
+	 * 
+	 * Returns List with all initiatives persisted in the database
+	 * 
+	 * @return
+	 */
+	public List<InitiativeVo> getInitiatives();
+	
+	/**
+	 * getInitiativesByUserId
+	 * 
+	 * Returns List with all user initiatives persisted in the database
+	 * 
+	 * @return
+	 */
+	public List<InitiativeVo> getInitiativesByUserId(String userId);
 }

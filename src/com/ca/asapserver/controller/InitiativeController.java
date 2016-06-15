@@ -56,7 +56,7 @@ public class InitiativeController {
 	public String getInitiativesByUserId(@RequestParam("userId") String userId) { 
 		InitiativeManager initiativeManager = new InitiativeManager();
 		
-		List<InitiativeVo> initiatives = initiativeManager.getInitiatives(); // TODO: call getInitiativesByUserId
+		List<InitiativeVo> initiatives = initiativeManager.getInitiativesByUserId(userId); // TODO: call getInitiativesByUserId
 		
 		Gson gson = new Gson();
 		String initiativesToJason = gson.toJson(initiatives);
