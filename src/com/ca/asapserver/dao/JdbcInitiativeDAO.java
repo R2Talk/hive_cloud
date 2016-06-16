@@ -102,6 +102,8 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 		String stmtInitiativeId = initiativeVo.getInitiativeId();
 		String stmtUserId = String.valueOf(userId);
 		
+		//TODO: check if the user is already bounded
+		
 		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
 		String sql = "INSERT INTO USER_INITIATIVE (USER_iduser,INITIATIVE_idinitiative) VALUES (?, ?)";
 		//insert using jdbcTemplate 

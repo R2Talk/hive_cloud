@@ -22,10 +22,9 @@ public class MsgManager {
 	@Autowired
 	private ApplicationContext appContext;
 
-	public MsgManager(){
-	}
+	public MsgManager(){}
 	
-	// Test Version
+	//TODO: remove code below. For test only.
 	//
 	//public void insertMsg(String msg) {
 	//	MocMsgRepository msgRepository = MocMsgRepository.getInstance();

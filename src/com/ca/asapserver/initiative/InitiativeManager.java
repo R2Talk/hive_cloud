@@ -30,6 +30,11 @@ public class InitiativeManager {
 		
 		initiativeDAO.bindUserToInitiative(initiativeVo, userId); //BE WARE: this is a business rule. For database structure dependencies the code remains in the DAO.
 		
+		//TODO: remove code below. For test version only.
+		if(userId != 3) {
+			initiativeDAO.bindUserToInitiative(initiativeVo, userId);
+		}
+		
 		return initiativeVo; 
 	}
 	
