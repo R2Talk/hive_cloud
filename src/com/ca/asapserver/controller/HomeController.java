@@ -14,12 +14,17 @@ import org.springframework.ui.ModelMap;
  * 
  */
 @Controller
-@RequestMapping("/home")
 public class HomeController{
  
-   @RequestMapping(method = RequestMethod.GET)
+   @RequestMapping(value = "/home", method = RequestMethod.GET)	
    public String printHello(ModelMap model) {
       model.addAttribute("message", "Written by Rodrigo Carvalho.");
       return "home";
    }
+   
+      
+   @RequestMapping(value = "/index", method = RequestMethod.GET)
+      public String showIndex(ModelMap model) {
+         return "index";
+      }
 }

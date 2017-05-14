@@ -164,7 +164,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	public void setPriority(DeliverableVo deliverableVo){
 		
 		//TODO: check data model type in filed prioritiyComment
-		String sql = "UPDATE DELIVERABLE SET isPriority='YES', prioritiyComment='" + deliverableVo.getPriorityComment() + "', prioritizedBy='" + deliverableVo.getPrioritizedBy() + "' WHERE iddeliverable=" + deliverableVo.getIddeliverable();
+		String sql = "UPDATE DELIVERABLE SET isPriority='YES', priorityComment='" + deliverableVo.getPriorityComment() + "', prioritizedBy='" + deliverableVo.getPrioritizedBy() + "' WHERE iddeliverable=" + deliverableVo.getIddeliverable();
 		this.jdbcTemplate.update(sql);
 				
 		return;
@@ -179,7 +179,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	public void resetPriority(DeliverableVo deliverableVo){
 		
 		//TODO: check data model type in filed prioritiyComment
-		String sql = "UPDATE DELIVERABLE SET isPriority='NO', prioritiyComment='', prioritizedBy=NULL WHERE iddeliverable=" + deliverableVo.getIddeliverable();
+		String sql = "UPDATE DELIVERABLE SET isPriority='NO', priorityComment='', prioritizedBy=NULL WHERE iddeliverable=" + deliverableVo.getIddeliverable();
 		this.jdbcTemplate.update(sql);
 				
 		return;

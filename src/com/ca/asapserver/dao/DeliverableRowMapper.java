@@ -31,7 +31,7 @@ public class DeliverableRowMapper implements RowMapper<DeliverableVo> {
 		deliverableVo.setIdresponsibleuser((new Integer((rs.getInt("idresponsibleuser"))).toString()));
 		deliverableVo.setIsPriority(rs.getString("isPriority"));
 		deliverableVo.setPrioritizedBy((new Integer((rs.getInt("prioritizedBy"))).toString()));
-		deliverableVo.setPriorityComment(rs.getString("prioritiyComment")); //TODO? check spell in the database column
+		deliverableVo.setPriorityComment(rs.getString("priorityComment")); //TODO? check spell in the database column
 		deliverableVo.setRating((new Integer((rs.getInt("rating"))).toString()));
 		deliverableVo.setStatus(rs.getString("status"));
 		deliverableVo.setTitle(rs.getString("title"));
