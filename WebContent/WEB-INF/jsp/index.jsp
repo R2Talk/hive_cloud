@@ -3,7 +3,6 @@
   Material Design Lite
 -->
 
-<!-- Yabee Hive - Index page -->
 
 <html lang="en">
   <head>
