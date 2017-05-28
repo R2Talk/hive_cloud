@@ -1,6 +1,8 @@
 <!doctype html>
 <!--
-  Material Design Lite
+
+ Google MDL
+ 
 -->
 
 <html lang="en">
