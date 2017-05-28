@@ -15,6 +15,8 @@
   See the License for the specific language governing permissions and
   limitations under the License
 -->
+
+<!-- Yabee Hive - Index page -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
