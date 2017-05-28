@@ -27,4 +27,9 @@ public class HomeController{
       public String showIndex(ModelMap model) {
          return "index";
       }
+   
+   @RequestMapping(value = "/hive", method = RequestMethod.GET)
+   public String showHive(ModelMap model) {
+      return "hive";
+   }
 }
