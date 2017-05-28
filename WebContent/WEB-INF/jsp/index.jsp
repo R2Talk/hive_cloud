@@ -3,8 +3,6 @@
   Material Design Lite
 -->
 
-<!-- hive web pages  -->
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
