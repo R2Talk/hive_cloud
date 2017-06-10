@@ -94,8 +94,27 @@ public class InitiativeController {
 		
 	}
 	
+	
 	/**
-	 * inviteUser
+	 * deleteInitiativeById
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/deleteInitiativeById", method = RequestMethod.GET, produces = "application/json")
+	public String deleteInitiativeById(@RequestParam("initiativeId") String initiativeId) { 
+		
+		String result="";
+		
+		//create InitiativeVo using DAO object
+		InitiativeManager initiativeManager = new InitiativeManager();
+		//create and return newly created initiative with auto incremented created id
+		result = initiativeManager.deleteInitiativeById(initiativeId);
+		
+		return result;
+		
+	}
+	
+	/** inviteUser
 	 * 
 	 * @return
 	 */

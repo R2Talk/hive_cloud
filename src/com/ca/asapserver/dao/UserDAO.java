@@ -46,6 +46,13 @@ public interface UserDAO {
 	public void removeUserDeliverableAssociation(int deliverableId);
 	
 	/**
+	 * removeUserInitiativeAssociation
+	 * 
+	 * @param deliverableId
+	 */
+	public void removeUserInitiativeAssociation(int initiativeId);
+	
+	/**
 	 * getUserById
 	 * 
 	 * @return

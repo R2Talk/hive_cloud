@@ -121,8 +121,21 @@ public class JdbcUserDAO implements UserDAO {
 	public void removeUserDeliverableAssociation(int deliverableId){ //TODO: Need refactoring to throw exceptions
 		
 		//Delete deliverable messages  
-		String sql = "DELETE FROM USER_DELIVERABLE WHERE DELIVERABLE_iddeliverable = ?";
-		this.jdbcTemplate.update(sql, new Object[] { deliverableId });
+		//String sql = "DELETE FROM USER_DELIVERABLE WHERE DELIVERABLE_iddeliverable = ?";
+		//this.jdbcTemplate.update(sql, new Object[] { deliverableId });
+				
+	}
+	
+	/**
+	 * removeUserInitiativeAssociation
+	 * 
+	 * @param deliverableId
+	 */
+	public void removeUserInitiativeAssociation(int initiativeId){ //TODO: Need re-factoring to throw exceptions
+		
+		//Delete association of users with the identified initiative  
+		String sql = "DELETE FROM USER_INITIATIVE WHERE INITIATIVE_idinitiative = ?";
+		this.jdbcTemplate.update(sql, new Object[] { initiativeId });
 				
 	}
 	

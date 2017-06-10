@@ -143,5 +143,27 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 		return initiatives;
 	}
 	
+	/**
+	 * deleteInitiativeById
+	 * 
+	 * Delete the identified initiative and all it´s deliverables
+	 * 
+	 * @return
+	 */
+	public void deleteInitiativeById(String initiativeId){ //TODO: missing code for exceptions
+		
+		//BE WARE: The delete initiative operation has the premise that all deliverables were previously removed, this is done by the Initiative manager before calling this method
+		//TO CONDIDER: this should be a database rule to ensure that child entities are remove before parent
+		
+		//delete initiative
+		String deleteInitiativeSql = "DELETE FROM INITIATIVE WHERE idinitiative = ?";
+		this.jdbcTemplate.update(deleteInitiativeSql, new Object[] { initiativeId });
+				
+		return;
+
+	}
+	
+	
+
 }
 	

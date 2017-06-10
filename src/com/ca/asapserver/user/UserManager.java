@@ -92,11 +92,26 @@ public class UserManager {
 	 * @param deliverableId
 	 * @return
 	 */
-	public void removeUserDeliverableAssociation(int deliverableId)  { //TODO: Need refactoring to throw exceptions
+	public void removeUserDeliverableAssociation(int deliverableId)  { //TODO: Need re-factoring to throw exceptions
 		
 		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
 		
 		userDAO.removeUserDeliverableAssociation(deliverableId);
+		
+		return;
+	}
+	
+	/**
+	 * removeUserInitiativeAssociation
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void removeUserInitiativeAssociation(int deliverableId)  { //TODO: Need re-factoring to throw exceptions
+		
+		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
+		
+		userDAO.removeUserInitiativeAssociation(deliverableId);
 		
 		return;
 	}

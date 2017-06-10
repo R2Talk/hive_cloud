@@ -1,9 +1,9 @@
 package com.ca.asapserver.initiative;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.ca.asapserver.dao.DeliverableDAO;
-import com.ca.asapserver.dao.InitiativeDAO;
 import com.ca.asapserver.message.MsgManager;
 import com.ca.asapserver.springutils.AppContextHelper;
 import com.ca.asapserver.user.UserManager;
@@ -82,6 +82,33 @@ public class DeliverableManager {
 		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
 		//TODO: evaluate the case for code for removing entities that are associated with the deliverable should be part of DAO if it's database structure constraint. In This case for messages and users associated with the deliverable.
 		deliverableDAO.deleteDeliverable(deliverableId); 
+		
+		return;
+	}
+	
+	
+	/**
+	 * deleteDeliverablesByInitiativeId
+	 * 
+	 * @param initiativeId
+	 * @return
+	 */
+	public void deleteDeliverablesByInitiativeId(String initiativeId){ //TODO: Need re-factoring to throw exceptions
+		
+		InitiativeVo initiativeVo;
+		List<DeliverableVo> deliverableVoList;
+		
+		//prepare InitiativeVo only for identity
+		initiativeVo = new InitiativeVo(initiativeId, "", "");
+		
+		//Iterate the deliverables of the identified Initiative
+		deliverableVoList = getDeliverablesByInitiative(initiativeVo);
+		
+		for (Iterator<DeliverableVo> iter = deliverableVoList.iterator(); iter.hasNext(); ) {
+			DeliverableVo deliverableVo = iter.next();
+			//deleteDeliverable
+			deleteDeliverable(Integer.parseInt(deliverableVo.getIddeliverable()));
+		}
 		
 		return;
 	}

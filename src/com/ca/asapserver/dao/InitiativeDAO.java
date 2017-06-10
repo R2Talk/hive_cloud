@@ -49,4 +49,13 @@ public interface InitiativeDAO {
 	 * @return
 	 */
 	public List<InitiativeVo> getInitiativesByUserId(String userId);
+	
+	/**
+	 * deleteInitiativeById
+	 * 
+	 * Delete the identified initiative and all it´s deliverables
+	 * 
+	 * @return
+	 */
+	public void deleteInitiativeById(String initiativeId);
 }
