@@ -137,4 +137,17 @@ public class DeliverableManager {
 		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
 		deliverableDAO.resetPriority(deliverableVo);
 	}
+	
+	/**
+	 * updateDeliverable
+	 * 
+	 * @param deliverableVo
+	 */
+	public void updateDeliverable(DeliverableVo deliverableVo){
+		
+		//update deliverable 
+		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
+		deliverableDAO.updateDeliverable(deliverableVo);
+		
+	}
 }

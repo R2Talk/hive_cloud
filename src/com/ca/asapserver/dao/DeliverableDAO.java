@@ -62,4 +62,10 @@ public interface DeliverableDAO {
 	 */
 	public void resetPriority(DeliverableVo deliverableVo);
 	
+	/**
+	 * updateDeliverable
+	 * 
+	 * @param deliverableVo
+	 */
+	public void updateDeliverable(DeliverableVo deliverableVo);
 }

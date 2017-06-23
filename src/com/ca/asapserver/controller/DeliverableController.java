@@ -37,13 +37,13 @@ public class DeliverableController {
 	 * @param initiativeVo
 	 * @return
 	 */
-	@RequestMapping(value = "/getDeliverablesByInitiative", method = RequestMethod.GET)	
+	@RequestMapping(value = "/getDeliverablesByInitiative", method = RequestMethod.GET, produces = "application/json")	
 	public String getDeliverablesByInitiative(@RequestParam("initiativeVo") String p_initiativeVo) { 
 		Gson gson;	
 		InitiativeVo initiativeVo;
 		List<DeliverableVo> deliverables;
 		
-		//deserialize generic type for List of MessageVo
+		//de_serialize generic type for List of MessageVo
         gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
         Type initiativeVoType = new TypeToken<InitiativeVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
         initiativeVo = gson.fromJson(p_initiativeVo, initiativeVoType);
@@ -168,6 +168,30 @@ public class DeliverableController {
 	
         DeliverableManager deliverableManager = new DeliverableManager();
         deliverableManager.resetDeliverablePriority(deliverableVo);
+        
+		return "";
+	}
+	
+	/**
+	 * updateDeliverable
+	 * 
+	 * @param deliverableVo
+	 * @return
+	 */
+	@RequestMapping(value = "/updateDeliverable", method = RequestMethod.GET)	
+	public String updateDeliverable(@RequestParam("jasonDeliverableVo") String jasonDeliverableVo) { 
+		Gson gson;
+		DeliverableVo deliverableVo;
+		
+		//System.out.println(jasonDeliverableVo);
+		
+		//deserialize generic type 
+        gson = new GsonBuilder().setDateFormat("MMM dd, yyyy").create();
+        Type deliverableType = new TypeToken<DeliverableVo>(){}.getType(); //this is necessary because we are deserializing a generic class type
+        deliverableVo = gson.fromJson(jasonDeliverableVo, deliverableType);
+	
+        DeliverableManager deliverableManager = new DeliverableManager();
+        deliverableManager.updateDeliverable(deliverableVo);
         
 		return "";
 	}

@@ -184,4 +184,19 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 				
 		return;
 	}
+	
+	/**
+	 * updateDeliverable
+	 * 
+	 * @param deliverableVo
+	 */
+	public void updateDeliverable(DeliverableVo deliverableVo){
+		
+		String sql = "UPDATE DELIVERABLE SET title='" + deliverableVo.getTitle() + "', description='" + deliverableVo.getDescription() + "', duedate='" + deliverableVo.getDuedate() + "' WHERE iddeliverable=" + deliverableVo.getIddeliverable();
+		this.jdbcTemplate.update(sql);
+				
+		return;
+			
+	}
+	
 }
