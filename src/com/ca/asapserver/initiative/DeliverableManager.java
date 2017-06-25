@@ -63,6 +63,22 @@ public class DeliverableManager {
 	}
 	
 	/**
+	 * finishDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void finishDeliverable(int deliverableId){ //TODO: Need re-factoring to throw exceptions
+					
+		//Delete deliverable
+		DeliverableDAO deliverableDAO = (DeliverableDAO) AppContextHelper.getApplicationContext().getBean("deliverableDAO");
+		//TODO: evaluate the case for code for removing entities that are associated with the deliverable should be part of DAO if it's database structure constraint. In This case for messages and users associated with the deliverable.
+		deliverableDAO.finishDeliverable(deliverableId); 
+		
+		return;
+	}
+	
+	/**
 	 * deleteDeliverable
 	 * 
 	 * @param deliverableId

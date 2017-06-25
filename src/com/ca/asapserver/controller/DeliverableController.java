@@ -111,6 +111,23 @@ public class DeliverableController {
 	}
 	
 	/**
+	 * finishDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	@RequestMapping(value = "/finishDeliverable", method = RequestMethod.GET)	
+	public void concludeDeliverable(@RequestParam("deliverableId") String deliverableId) { //TODO: Need refactoring to throw exceptions 
+		
+		//delete Deliverable
+		DeliverableManager deliverableManager = new DeliverableManager();
+		//create and return newly created initiative with auto incremented created id
+		deliverableManager.finishDeliverable(Integer.parseInt(deliverableId));
+				
+		return;
+	}
+	
+	/**
 	 * deleteDeliverable
 	 * 
 	 * @param deliverableId

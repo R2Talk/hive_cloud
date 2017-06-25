@@ -60,7 +60,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	 */
 	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo){
 		
-		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId();
+		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId() + " AND status = 'OPEN'";
 		
 		//String sql = "SELECT DELIVERABLE.iddeliverable, ..., USER.name FROM DELIVERABLE INNER JOIN USER ON DELIVERABLE.idresponsibleuser = USER.iduser"
 		
@@ -77,7 +77,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	 */
 	public List<DeliverableVo> getPrioritizedDeliverables(){
 			
-		String sql = "SELECT * FROM DELIVERABLE WHERE isPriority = 'YES'";
+		String sql = "SELECT * FROM DELIVERABLE WHERE isPriority = 'YES'  AND status = 'OPEN'";
 		
 		List<DeliverableVo> deliverables = this.jdbcTemplate.query(sql, new DeliverableRowMapper()); 
 			
@@ -139,6 +139,21 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 		deliverableVo.setIddeliverable(autoincrementedId.toString());
 		
 		return deliverableVo;		
+	}
+	
+	/**
+	 * finishDeliverable
+	 * 
+	 * @param deliverableId
+	 * @return
+	 */
+	public void finishDeliverable(int deliverableId){ //TODO: need re-factoring to throw exception
+		
+		//Delete deliverable
+		String deleteDeliverableSql = "UPDATE DELIVERABLE SET  status ='FINISHED' WHERE iddeliverable = ?";
+		this.jdbcTemplate.update(deleteDeliverableSql, new Object[] { deliverableId });
+		
+		return;
 	}
 	
 	/**
