@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,18 +32,41 @@
       <a href="#scroll-tab-about" class="mdl-layout__tab">About</a>
     </div>
   </header>
+  
+  
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Hive Cloud</span>
   </div>
+  
   <main class="mdl-layout__content">
     <section class="mdl-layout__tab-panel is-active" id="scroll-tab-home">
-      <div class="page-content"><!-- Your content goes here --></div>
+      <div class="page-content">
+      <!-- Your content goes here -->
+      <p>Welcome</p>
+      <p>Using Yabee HIVE you have access to the Yabee activities reports.</p>This is an alpha version without the need for authentication.</p>
+      </div>
     </section>
+    
     <section class="mdl-layout__tab-panel" id="scroll-tab-reports">
-      <div class="page-content"><!-- Your content goes here --></div>
+      
+      <!-- Your content goes here -->
+      <c:forEach var="deliverableVo" items="${deliverables}">
+      <div class="mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__title">
+        <c:out value="${deliverableVo.title}"/>
+  		</div>
+  		<div class="mdl-card__supporting-text">
+  		<c:out value="${deliverableVo.description}"/>
+  		</div>
+      </div>
+       </c:forEach>      
     </section>
+    
     <section class="mdl-layout__tab-panel" id="scroll-tab-about">
-      <div class="page-content"><!-- Your content goes here --></div>
+      <div class="page-content">
+      <!-- Your content goes here -->
+      Hive Cloud Server v1.0
+      </div>
     </section>
   </main>
 </div>
