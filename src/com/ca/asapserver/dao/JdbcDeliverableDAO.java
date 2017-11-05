@@ -60,7 +60,7 @@ public class JdbcDeliverableDAO implements DeliverableDAO {
 	 */
 	public List<DeliverableVo> getDeliverablesByInitiative(InitiativeVo initiativeVo){
 		
-		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId() + " AND status = 'OPEN'";
+		String sql = "SELECT * FROM DELIVERABLE WHERE initiative_idinitiative = " + initiativeVo.getInitiativeId(); // + " AND status = 'OPEN'";
 		
 		//String sql = "SELECT DELIVERABLE.iddeliverable, ..., USER.name FROM DELIVERABLE INNER JOIN USER ON DELIVERABLE.idresponsibleuser = USER.iduser"
 		
