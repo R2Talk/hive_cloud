@@ -58,4 +58,21 @@ public interface InitiativeDAO {
 	 * @return
 	 */
 	public void deleteInitiativeById(String initiativeId);
+	
+	/**
+	 * getInitiativeUsersByInitiativeId
+	 * 
+	 * @param initiativeId
+	 * @return
+	 */
+	public List<UserVo> getInitiativeUsersByInitiativeId(String initiativeId);
+	
+	/**
+	 * getKnownUsersByUserId
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public List<UserVo> getKnownUsersByUserId(String userId);
+	
 }

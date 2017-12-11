@@ -6,11 +6,12 @@ import com.ca.asapserver.dao.InitiativeDAO;
 import com.ca.asapserver.springutils.AppContextHelper;
 import com.ca.asapserver.user.UserManager;
 import com.ca.asapserver.vo.InitiativeVo;
+import com.ca.asapserver.vo.UserVo;
 
 /**
  * InitiativeManager
  * 
- * Functions to create, read, update and delete deliverables.
+ * Initiative related methods
  *  
  * @author Rodrigo Carvalho
  *
@@ -89,4 +90,29 @@ public class InitiativeManager {
 		return "";
 	}
 	
+	/**
+	 * getInitiativeUsersByInitiativeId
+	 * 
+	 * @param initiativeId
+	 * @return
+	 */
+	public List<UserVo> getInitiativeUsersByInitiativeId(String initiativeId){
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.getInitiativeUsersByInitiativeId(initiativeId);
+		
+	}
+	
+	/**
+	 * getKnownUsersByUserId
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public List<UserVo> getKnownUsersByUserId(String userId){
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.getKnownUsersByUserId(userId);
+		
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import com.ca.asapserver.vo.InitiativeVo;
+import com.ca.asapserver.vo.UserVo;
 
 /**
  * JdbcInitiativeDAO
@@ -163,7 +164,31 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 
 	}
 	
+	/**
+	 * getInitiativeUsersByInitiativeId
+	 * 
+	 * @param initiativeId
+	 * @return
+	 */
+	public List<UserVo> getInitiativeUsersByInitiativeId(String initiativeId){
+		String sql = "SELECT u.iduser, u.name, u.password, u.email, u.type FROM USER u INNER JOIN USER_INITIATIVE ui ON u.iduser = ui.USER_iduser WHERE ui.INITIATIVE_idinitiative = " + initiativeId;
+		List<UserVo> userVoList = this.jdbcTemplate.query(sql, new UserRowMapper()); 
+			
+		return userVoList;
+	}
 	
-
+	
+	/**
+	 * getKnownUsersByUserId
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public List<UserVo> getKnownUsersByUserId(String userId){
+		String sql = "SELECT usr.iduser, usr.name, usr.password, usr.email, usr.type FROM USER usr INNER JOIN (SELECT DISTINCT ui.USER_iduser FROM USER_INITIATIVE ui INNER JOIN (SELECT INITIATIVE_idinitiative FROM USER_INITIATIVE WHERE USER_iduser = " + userId + ") ui2 ON ui.INITIATIVE_idinitiative = ui2.INITIATIVE_idinitiative) uid ON usr.iduser = uid.USER_iduser;";
+		List<UserVo> userVoList = this.jdbcTemplate.query(sql, new UserRowMapper()); 
+			
+		return userVoList;
+	}
 }
 	

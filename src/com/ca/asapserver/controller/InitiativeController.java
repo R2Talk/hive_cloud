@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ca.asapserver.initiative.DeliverableManager;
 import com.ca.asapserver.initiative.InitiativeManager;
+import com.ca.asapserver.vo.DeliverableVo;
 import com.ca.asapserver.vo.InitiativeVo;
 import com.ca.asapserver.vo.MessageVo;
+import com.ca.asapserver.vo.UserVo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -127,5 +130,45 @@ public class InitiativeController {
 		
 		return "";
 		
+	}
+	
+	/**
+	 * getInitiativeUsersByInitiativeId
+	 * 
+	 * @param initiativeId
+	 * @return
+	 */
+	@RequestMapping(value = "/getInitiativeUsersByInitiativeId", method = RequestMethod.GET, produces = "application/json")	
+	public String getInitiativeUsersByInitiativeId(@RequestParam("initiativeId") String p_initiativeId) { 
+		Gson gson;	
+		List<UserVo> userVoList;
+		
+		InitiativeManager initiativeManager = new InitiativeManager();
+		userVoList  = initiativeManager.getInitiativeUsersByInitiativeId(p_initiativeId);
+		
+		gson = new Gson();
+		String userVoListToJason = gson.toJson(userVoList);
+		
+		return userVoListToJason;
+	}
+	
+	/**
+	 * getKnownUsersByUserId
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping(value = "/getKnownUsersByUserId", method = RequestMethod.GET, produces = "application/json")	
+	public String getKnownUsersByUserId(@RequestParam("userId") String p_userId) { 
+		Gson gson;	
+		List<UserVo> userVoList;
+		
+		InitiativeManager initiativeManager = new InitiativeManager();
+		userVoList  = initiativeManager.getKnownUsersByUserId(p_userId);
+		
+		gson = new Gson();
+		String userVoListToJason = gson.toJson(userVoList);
+		
+		return userVoListToJason;
 	}
 }
