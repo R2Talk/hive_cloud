@@ -13,6 +13,8 @@ import com.ca.asapserver.vo.UserVo;
  * 
  * Implements RowMapper for use with Spring JdbcTemplate methods.
  * 
+ * BEWARE: used in other DAO than JdbcUserDAO (ex: JdbcInitiaticeDAO)
+ * 
  * @author Rodrigo Carvalho.
  *
  */
