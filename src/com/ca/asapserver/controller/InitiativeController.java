@@ -171,4 +171,38 @@ public class InitiativeController {
 		
 		return userVoListToJason;
 	}
+	
+	/**
+	 * addUserToInitiative
+	 * 
+	 * @param userEmail
+	 * @param initiativeId
+	 * @return
+	 */
+	@RequestMapping(value = "/addUserToInitiative", method = RequestMethod.GET, produces = "application/json")	
+	public String addUserToInitiative(@RequestParam("userEmail") String p_userEmail, @RequestParam("initiativeId") String p_initiativeId) { 
+		String return_code;
+		
+		InitiativeManager initiativeManager = new InitiativeManager();
+		return_code  = initiativeManager.addUserToInitiative(p_userEmail, p_initiativeId);
+		
+		return return_code;
+	}
+	
+	/**
+	 * deleteUserFromInitiative
+	 * 
+	 * @param userId
+	 * @param initiativeId
+	 * @return
+	 */
+	@RequestMapping(value = "/deleteUserFromInitiative", method = RequestMethod.GET, produces = "application/json")	
+	public String deleteUserFromInitiative(@RequestParam("userId") String p_userId, @RequestParam("initiativeId") String p_initiativeId) { 
+		String return_code;
+		
+		InitiativeManager initiativeManager = new InitiativeManager();
+		return_code  = initiativeManager.deleteUserFromInitiative(p_userId, p_initiativeId);
+		
+		return return_code;
+	}
 }

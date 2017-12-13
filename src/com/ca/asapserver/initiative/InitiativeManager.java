@@ -3,6 +3,7 @@ package com.ca.asapserver.initiative;
 import java.util.List;
 
 import com.ca.asapserver.dao.InitiativeDAO;
+import com.ca.asapserver.dao.UserDAO;
 import com.ca.asapserver.springutils.AppContextHelper;
 import com.ca.asapserver.user.UserManager;
 import com.ca.asapserver.vo.InitiativeVo;
@@ -113,6 +114,51 @@ public class InitiativeManager {
 		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
 		
 		return initiativeDAO.getKnownUsersByUserId(userId);
+		
+	}
+	
+	/**
+	 * addUserToInitiative
+	 * 
+	 * @param userEmail
+	 * @param initiativeId
+	 * @return
+	 */
+	public String addUserToInitiative(String userEmail, String initiativeId){
+		
+		//get user id from user email
+		UserVo userVo = null;
+		List<UserVo> userVoList = null;
+		String userId = null;
+		UserDAO userDAO = (UserDAO) AppContextHelper.getApplicationContext().getBean("userDAO");
+		userVoList = userDAO.getUsersByEmail(userEmail);
+		
+		if (userVoList != null) {
+			userVo = (UserVo) userVoList.get(0);
+			userId = Integer.toString(userVo.getUserId());
+		} else {
+			return "user nor found";
+		}
+		
+		
+		//add user to initiative
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.addUserToInitiative(userId, initiativeId);
+		
+	}
+	
+	/**
+	 * deleteUserFromInitiative
+	 * 
+	 * @param userId
+	 * @param initiativeId
+	 * @return
+	 */
+	public String deleteUserFromInitiative(String userId, String initiativeId){
+		InitiativeDAO initiativeDAO = (InitiativeDAO) AppContextHelper.getApplicationContext().getBean("initiativeDAO");
+		
+		return initiativeDAO.deleteUserFromInitiative(userId, initiativeId);
 		
 	}
 }

@@ -74,5 +74,23 @@ public interface InitiativeDAO {
 	 * @return
 	 */
 	public List<UserVo> getKnownUsersByUserId(String userId);
+
+	/**
+	 * addUserToInitiative
+	 * 
+	 * @param userId
+	 * @param initiativeId
+	 * @return
+	 */
+	public String addUserToInitiative(String userId, String initiativeId);
 	
+	/**
+	 * addUserToInitiative
+	 * 
+	 * @param userId
+	 * @param initiativeId
+	 * @return
+	 */
+	public String deleteUserFromInitiative(String userId, String initiativeId);
+
 }

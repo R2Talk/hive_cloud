@@ -190,5 +190,41 @@ public class JdbcInitiativeDAO implements InitiativeDAO {
 			
 		return userVoList;
 	}
+	
+	/**
+	 * addUserToInitiative
+	 * 
+	 * @param userEmail
+	 * @param initiativeId
+	 * @return
+	 */
+	public String addUserToInitiative(String userId, String initiativeId){
+		
+		//TODO: check if the user is already bounded
+		
+		//prepare SQL. Be ware that the primary key must be auto increment and is not passed to in the sql statement.
+		String sql = "INSERT INTO USER_INITIATIVE (USER_iduser, INITIATIVE_idinitiative) VALUES (?, ?)";
+		//insert using jdbcTemplate 
+		this.jdbcTemplate.update(sql, Long.valueOf(userId), Long.valueOf(initiativeId));
+				
+		return "success";
+	}
+	
+	/**
+	 * deleteUserFromInitiative
+	 * 
+	 * @param userId
+	 * @param initiativeId
+	 * @return
+	 */
+	public String deleteUserFromInitiative(String userId, String initiativeId){
+		
+		//Delete deliverable
+		String deleteUserFromInitiativeSql = "DELETE FROM USER_INITIATIVE WHERE USER_iduser = ? AND INITIATIVE_idinitiative = ?";
+		this.jdbcTemplate.update(deleteUserFromInitiativeSql, Long.valueOf(userId), Long.valueOf(initiativeId));
+		
+		return "success";
+	}
+
 }
 	
